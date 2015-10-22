@@ -42,7 +42,7 @@ if(!(Test-Path $setupFileLocalPath))
 
 # Install NetFx46
 $setupLogFilePath = Join-Path $env:TEMP -ChildPath "NetFx46SetupLog.txt"
-$arguments = "/q /norestart /serialdownload /log $setupLogFilePath"
+$arguments = "/q /serialdownload /log $setupLogFilePath"
 
 "$(Get-Date): Start to install NetFx 4.6." | Out-File -FilePath $logFile -Append
 $process = Start-Process -FilePath $setupFileLocalPath -ArgumentList $arguments -Wait -PassThru
