@@ -5,12 +5,12 @@ Set-StrictMode -Version Latest
 $logFile = Join-Path $env:TEMP -ChildPath "InstallNetFx46ScriptLog.txt"
 
 # Check if NetFx46 or later version exists
-$netFxReleaseKey = Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\\Microsoft\\NET Framework Setup\\NDP\\v4\\Full\\" -Name Release -ErrorAction Ignore
+$netFxKey = Get-ItemProperty -Path "HKLM:\SOFTWARE\\Microsoft\\NET Framework Setup\\NDP\\v4\\Full\\" -ErrorAction Ignore
 
-#if($netFxReleaseKey -ge 393295) {
-#    "$(Get-Date): The machine already has NetFx 4.6 or later version installed." | Out-File -FilePath $logFile -Append
-#    return
-#}
+if($netFxKey -and $netFxKey.Release -ge 393295) {
+    "$(Get-Date): The machine already has NetFx 4.6 or later version installed." | Out-File -FilePath $logFile -Append
+    return
+}
 
 # Download NetFx46
 $setupFileSourceUri = "https://download.microsoft.com/download/1/4/A/14A6C422-0D3C-4811-A31F-5EF91A83C368/NDP46-KB3045560-Web.exe"
