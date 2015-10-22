@@ -34,7 +34,7 @@ catch {
     $webClient.DownloadFile($setupFileSourceUri, $setupFileLocalPath)
 }
 
-if(!Test-Path $setupFileLocalPath)
+if(!(Test-Path $setupFileLocalPath))
 {
     "$(Get-Date): Failed to download NetFx 4.6 setup package." | Out-File -FilePath $logFile -Append
     return
