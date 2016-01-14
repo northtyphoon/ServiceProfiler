@@ -132,6 +132,7 @@
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
         "typeHandlerVersion": "1.4",
+        "forceUpdateTag": "RerunExtension",
         "autoUpgradeMinorVersion": true,
         "settings": {
           "fileUris": [ "https://raw.githubusercontent.com/northtyphoon/ServiceProfiler/master/InstallNetFx46.ps1" ],
