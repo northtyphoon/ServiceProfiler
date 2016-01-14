@@ -13,7 +13,7 @@ if($netFxKey -and $netFxKey.Release -ge 394271) {
 }
 
 # Download the latest NetFx46
-$setupFileSourceUri = "https://download.microsoft.com/download/3/5/9/35980F81-60F4-4DE3-88FC-8F962B97253B/NDP461-KB3102438-Web1.exe"
+$setupFileSourceUri = "https://download.microsoft.com/download/3/5/9/35980F81-60F4-4DE3-88FC-8F962B97253B/NDP461-KB3102438-Web.exe"
 $setupFileLocalPath = Join-Path $env:TEMP -ChildPath "NDP461-KB3102438-Web.exe"
 
 "$(Get-Date): Start to download NetFx 4.6.1 to $setupFileLocalPath." | Tee-Object -FilePath $logFile -Append
