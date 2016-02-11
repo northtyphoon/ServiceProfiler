@@ -56,7 +56,7 @@ if(!(Test-Path $setupFileLocalPath))
 
 # Install NetFx46
 $setupLogFilePath = Join-Path $env:TEMP -ChildPath "NetFx46SetupLog.txt"
-$arguments = "/q /serialdownload /log $setupLogFilePath"
+$arguments = "/q /serialdownload /norestart /log $setupLogFilePath"
 
 "$(Get-Date): Start to install NetFx 4.6.1" | Tee-Object -FilePath $logFile -Append
 $process = Start-Process -FilePath $setupFileLocalPath -ArgumentList $arguments -Wait -PassThru
@@ -68,8 +68,13 @@ if(-not $process) {
 else {
     $exitCode = $process.ExitCode
 
-    if($exitCode -eq 0 -or $exitCode -eq 1641 -or $exitCode -eq 3010) {
+    if($exitCode -eq 0) {
         "$(Get-Date): Install NetFx succeeded with exit code : $exitCode." | Tee-Object -FilePath $logFile -Append
+        exit 0
+    }
+    elseif($exitCode -eq 1641 -or $exitCode -eq 3010) {
+        "$(Get-Date): Install NetFx succeeded with exit code : $exitCode. Start to reboot." | Tee-Object -FilePath $logFile -Append
+        Restart-Computer -Force
         exit 0
     }
     else {

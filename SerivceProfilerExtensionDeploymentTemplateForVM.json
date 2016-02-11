@@ -42,7 +42,7 @@
       "EtwMetrics": [
         {
           "ProviderName": "Microsoft-Windows-ASPNET",
-          "ProviderKeywords": 72057594037927940,
+          "ProviderKeywords": 72057594037927940, /*0xFFFFFFFFFFFFFF*/
           "ProviderLevel": "Informational",
           "Event": "Request/Start",
           "EventStop": "Request/Stop",
