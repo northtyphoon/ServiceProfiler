@@ -74,7 +74,11 @@ else {
     }
     elseif($exitCode -eq 1641 -or $exitCode -eq 3010) {
         "$(Get-Date): Install NetFx succeeded with exit code : $exitCode. Start to reboot." | Tee-Object -FilePath $logFile -Append
+
+        # Issue restart and wait 3 minutes for it
         Restart-Computer -Force
+        Start-Sleep -Seconds 180
+
         exit 0
     }
     else {
