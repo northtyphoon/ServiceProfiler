@@ -55,7 +55,7 @@
       "EtwMetrics": [
         {
           "ProviderName": "Microsoft-ServiceFabric-Actors",
-          "ProviderKeywords": 2, /*0x2*/
+          "ProviderKeywords": 2,
           "ProviderLevel": "Verbose",
           "Event": "ActorMethod/Start",
           "EventStop": "ActorMethod/Stop",
@@ -63,7 +63,7 @@
         },
         {
           "ProviderName": "Microsoft-ServiceFabric-Actors",
-          "ProviderKeywords": 4, /*0x4*/
+          "ProviderKeywords": 4,
           "ProviderLevel": "Verbose",
           "Event": "ActorSaveState/Start",
           "EventStop": "ActorSaveState/Stop",
