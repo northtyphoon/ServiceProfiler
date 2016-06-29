@@ -5,7 +5,8 @@
     Upload symbol pdb files to data cube sp-symbols container
 
 .NOTE
-    The script replies on Azure Powershll cmdlets which you can download from https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/WindowsAzurePowershellGet.3f.3f.3fnew.appids
+    You can download symstore from https://go.microsoft.com/fwlink/p/?LinkId=536682
+    The script relies on Azure Powershll cmdlets to upload symbol files to Azure storage. You can download it from https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/WindowsAzurePowershellGet.3f.3f.3fnew.appids
 
 .EXAMPLE
     .\UploadSybmolsToDataCubeSymbolsContainer.ps1 $symstoreExePath "C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\symstore.exe" `
