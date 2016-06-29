@@ -1,5 +1,16 @@
 ﻿#Requires -Version 3.0
 
+<#
+.DESCRIPTION
+    Install .Net Framework 4.6.1
+#>
+
+
+[CmdletBinding()]
+Param(
+    [switch]$norestart
+)
+
 Set-StrictMode -Version Latest
 
 $logFile = Join-Path $env:TEMP -ChildPath "InstallNetFx46ScriptLog.txt"
@@ -56,8 +67,12 @@ if(!(Test-Path $setupFileLocalPath))
 
 # Install NetFx46
 $setupLogFilePath = Join-Path $env:TEMP -ChildPath "NetFx46SetupLog.txt"
-$arguments = "/q /serialdownload /log $setupLogFilePath"
-
+if($norestart) {
+    $arguments = "/q /norestart /serialdownload /log $setupLogFilePath"
+}
+else {
+    $arguments = "/q /serialdownload /log $setupLogFilePath"
+}
 "$(Get-Date): Start to install NetFx 4.6.1" | Tee-Object -FilePath $logFile -Append
 $process = Start-Process -FilePath $setupFileLocalPath -ArgumentList $arguments -Wait -PassThru
 
@@ -68,6 +83,7 @@ if(-not $process) {
 else {
     $exitCode = $process.ExitCode
 
+    # 0, 1641 and 3010 indicate success. See https://msdn.microsoft.com/en-us/library/ee390831(v=vs.110).aspx for detail.
     if($exitCode -eq 0 -or $exitCode -eq 1641 -or $exitCode -eq 3010) {
         "$(Get-Date): Install NetFx succeeded with exit code : $exitCode." | Tee-Object -FilePath $logFile -Append
         exit 0
@@ -77,5 +93,3 @@ else {
         exit -1
     }
 }
-
-
