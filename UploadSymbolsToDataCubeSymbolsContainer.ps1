@@ -75,7 +75,7 @@ Write-Host "$(Get-Date): Finish SymStore"
 # Upload the pdb files to data cube storage sp-symbols container
 Write-Host "$(Get-Date): Start Upload"
 
-$storageContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+$storageContext = New-AzureStorageContext -StorageAccountName $dataCubeStorageAccountName -StorageAccountKey $dataCubeStorageAccountKey
 
 if(!(Get-AzureStorageContainer -Name $symbolContainerName -Context $storageContext -ErrorAction Ignore))
 {
