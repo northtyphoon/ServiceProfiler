@@ -9,12 +9,12 @@
     The script relies on Azure Powershll cmdlets to upload symbol files to Azure storage. You can download it from https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/WindowsAzurePowershellGet.3f.3f.3fnew.appids
 
 .EXAMPLE
-    .\UploadSybmolsToDataCubeSymbolsContainer.ps1 $symstoreExePath "C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\symstore.exe" `
-                                                  $pdbRootFolder "C:\build\release" `
-                                                  $workingFolder "C:\working" `
-                                                  $product "myproduct" `
-                                                  $dataCubeStorageAccountName "mystorageaccountname" `
-                                                  $dataCubeStorageAccountKey "mystroageaccountkey"
+    .\UploadSybmolsToDataCubeSymbolsContainer.ps1 -symstoreExePath "C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\symstore.exe" `
+                                                  -pdbRootFolder "C:\build\release" `
+                                                  -workingFolder "C:\working" `
+                                                  -product "myproduct" `
+                                                  -dataCubeStorageAccountName "mystorageaccountname" `
+                                                  -dataCubeStorageAccountKey "mystroageaccountkey"
 #>
 
 
