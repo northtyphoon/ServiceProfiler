@@ -6,18 +6,17 @@
 
 .NOTE
     You can download symstore from https://go.microsoft.com/fwlink/p/?LinkId=536682
-    The script relies on Azure Powershll cmdlets to upload symbol files to Azure storage. You can download it from https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/WindowsAzurePowershellGet.3f.3f.3fnew.appids
+    The script relies on Azure PowerShell cmdlets to upload symbol files to Azure storage. You can download it from https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/WindowsAzurePowershellGet.3f.3f.3fnew.appids
     The script also allows utlizing GitLink to update symbol files with source index mapping to your Git host. You can check out https://github.com/GitTools/GitLink for more details.
 
 .EXAMPLE
-    .\UploadSybmolsToDataCubeSymbolsContainer.ps1 -symstoreExePath "C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\symstore.exe" `                                                  
+    .\UploadSybmolsToDataCubeSymbolsContainer.ps1 -symstoreExePath "C:\tools\symstore.exe" `                                                  
                                                   -pdbRootFolder "C:\build\release" `
                                                   -workingFolder "C:\working" `
                                                   -product "myproduct" `
                                                   -dataCubeStorageAccountName "mystorageaccountname" `
                                                   -dataCubeStorageAccountKey "mystroageaccountkey" `
-                                                  -gitLinkExePath "C:\ProgramData\chocolatey\lib\gitlink\tools\GitLink.exe" `
-                                                  -gitLinkCommandParameters "C:\ProgramData\chocolatey\lib\gitlink\tools\GitLink.exe" `
+                                                  -gitLinkExePath "C:\tools\GitLink.exe" `
                                                   -gitLinkCommandParameters "C:\source\ -c release"
 #>
 
