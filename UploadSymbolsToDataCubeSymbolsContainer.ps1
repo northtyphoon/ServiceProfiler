@@ -82,9 +82,9 @@ $pdbFiles = Get-ChildItem -Path $pdbRootFolder -Filter "*.pdb" -Recurse
 
 foreach ($pdbfile in $pdbFiles)
 {
-    $pdfFilePath = $pdbfile.FullName
-    Write-Host "Start to index $pdfFilePath"
-    & $symstoreExePath add /f "$pdfFilePath" /compress /s "$workingFolder" /t "$product" /o    
+    $pdbFilePath = $pdbfile.FullName
+    Write-Host "Start to index $pdbFilePath"
+    & $symstoreExePath add /f "$pdbFilePath" /compress /s "$workingFolder" /t "$product" /o    
     if ($lastexitcode -ne 0)
     {
         Write-Error  "symstore failed as error code: $lastexitcode"
