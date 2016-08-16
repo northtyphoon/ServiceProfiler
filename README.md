@@ -44,7 +44,11 @@ The script follows the steps to prepare the symbol files.
                                                 -gitLinkCommandParameters "C:\source\ -c release"
 ```
 
-  - Source code in Visual Studio Team Service Git Repository. The following command instructs GitLink to generate VSTS specific source content url. Remember to replace My-VSTS-Account and My-GitRepo-Guid. To get the Git repository id guid from VSTS, you can open a browser, F12 (open Developer Tools) and switch to Network tab. Then open the target Git repository page in VSTS website and look for the request urls of "items?". The id can be found like the highlight "/_apis/git/repositories/**c4166904-b1a0-4689-bd8e-ed944f63e247**/items?".
+  - Source code in Visual Studio Team Service Git Repository. The following command instructs GitLink to generate VSTS specific source content url. Remember to replace My-VSTS-Account and My-GitRepo-Guid. To get the Git repository id, you can open the project page in VSTS website.
+ 1. Click the gear icon in the upper-right corner. This takes you to the configuration UI.
+ 2. Choose the "Version Control" tab. You'll get a list of repositories.
+ 3. Click the target repository. The URL in your address bar will update.
+ 4. Copy out the "repositoryId" query parameter in the URL.
 
 ```PowerShell
 .\UploadSybmolsToDataCubeSymbolsContainer.ps1 -symstoreExePath "C:\tools\symstore.exe" `                                                  
