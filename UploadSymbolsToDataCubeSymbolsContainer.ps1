@@ -64,10 +64,12 @@ if($gitLinkExePath -and $gitLinkCommandParameters)
 {
     # Run Gitlink to index source
     Write-Host "$(Get-Date): Start GetLink to index source"
-    $process = Start-Process -FilePath $gitLinkExePath -ArgumentList $gitLinkCommandParameters -Wait -PassThru
+    $gitLinkOutputFile = Join-Path $workingFolder "GitLinkOutput.txt"
+    $process = Start-Process -FilePath $gitLinkExePath -ArgumentList $gitLinkCommandParameters -Wait -PassThru -RedirectStandardOutput $gitLinkOutputFile
     if($process.ExitCode -ne 0)
     {
-        Write-Error  "GetLink failed as error code: $($process.ExitCode)" 
+        Write-Error  "GetLink failed as error code: $($process.ExitCode). Output:"
+        Get-Content $gitLinkOutputFile | Write-Host
         exit -1
     }
     Write-Host "$(Get-Date): Finish GetLink"
